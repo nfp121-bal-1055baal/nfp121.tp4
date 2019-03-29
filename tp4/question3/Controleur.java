@@ -1,3 +1,4 @@
+
 package question3;
 
 import question3.tp3.PileI;
@@ -11,8 +12,8 @@ import java.awt.event.*;
 /**
  * Décrivez votre classe Controleur ici.
  * 
- * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @Antonio Semaan (votre nom)
+ * @29-3-2019 (un numéro de version ou une date)
  */
 public class Controleur extends JPanel {
 
@@ -37,12 +38,104 @@ public class Controleur extends JPanel {
         donnee.addActionListener(null /* null est à remplacer */);
         JPanel boutons = new JPanel();
         boutons.setLayout(new FlowLayout());
-        boutons.add(push);  push.addActionListener(null /* null est à remplacer */);
-        boutons.add(add);   add.addActionListener(null /* null est à remplacer */);
-        boutons.add(sub);   sub.addActionListener(null /* null est à remplacer */);
-        boutons.add(mul);   mul.addActionListener(null /* null est à remplacer */);
-        boutons.add(div);   div.addActionListener(null /* null est à remplacer */);
-        boutons.add(clear); clear.addActionListener(null /* null est à remplacer */);
+        boutons.add(push);  push.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    
+                    pile.empiler(new Integer(Integer.parseInt(donnee.getText().toString())));
+                    
+                    toggleButtons();
+                }
+                catch(PilePleineException ex){
+                    ex.printStackTrace();
+                }
+                catch(NumberFormatException ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
+        boutons.add(add);   add.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    pile.empiler(pile.depiler() + pile.depiler());
+                    toggleButtons();
+                }
+                catch(PileVideException ex1){
+                    ex1.printStackTrace();
+                }
+                catch(PilePleineException ex2){
+                    ex2.printStackTrace();
+                }
+            }
+        });
+        add.setEnabled(false);
+        boutons.add(sub);   sub.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    Integer i1 = pile.depiler();
+                    Integer i2 = pile.depiler();
+                    pile.empiler(i2 - i1);
+                    toggleButtons();
+                }
+                catch(PileVideException ex1){
+                    ex1.printStackTrace();
+                }
+                catch(PilePleineException ex2){
+                    ex2.printStackTrace();
+                }
+            }
+        });
+        sub.setEnabled(false);
+        boutons.add(mul);   mul.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    pile.empiler(pile.depiler() * pile.depiler());
+                    toggleButtons();
+                }
+                catch(PileVideException ex1){
+                    ex1.printStackTrace();
+                }
+                catch(PilePleineException ex2){
+                    ex2.printStackTrace();
+                }
+            }
+        });
+        mul.setEnabled(false);
+        boutons.add(div);   div.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    Integer i1 = pile.depiler();
+                    Integer i2 = pile.depiler();
+                    if(i1==0){
+                        pile.empiler(i2);
+                        pile.empiler(i1);
+                    }else{
+                        pile.empiler(i2/i1);
+                    }
+                    toggleButtons();
+                }
+                catch(PileVideException ex1){
+                    ex1.printStackTrace();
+                }
+                catch(PilePleineException ex2){
+                    ex2.printStackTrace();
+                }
+            }
+        });
+        div.setEnabled(false);
+        boutons.add(clear); clear.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    int taille=pile.taille();
+                    for(int i=0;i<taille;i++)
+                        pile.depiler();
+                    toggleButtons();
+                }
+                catch(PileVideException ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
         add(boutons);
         boutons.setBackground(Color.red);
         actualiserInterface();
@@ -60,5 +153,17 @@ public class Controleur extends JPanel {
     // en cas d'exception comme division par zéro, 
     // mauvais format de nombre suite à l'appel de la méthode operande
     // la pile reste en l'état (intacte)
-
+    private void toggleButtons(){
+        if(pile.taille()<2){
+            add.setEnabled(false);
+            sub.setEnabled(false);
+            mul.setEnabled(false);
+            div.setEnabled(false);
+        }else{
+            add.setEnabled(true);
+            sub.setEnabled(true);
+            mul.setEnabled(true);
+            div.setEnabled(true);
+        }
+    }
 }
