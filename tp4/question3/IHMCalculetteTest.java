@@ -59,7 +59,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
         try{
             Container panel = f.getContentPane();
             Component[] components = panel.getComponents();
-            assertEquals(" ce n'est pas l'IHM attendue ?", 2, components.length);
+            assertEquals(" ce n'est pas l'IHM attendue ?", 3, components.length);
 
             // la bonne IHM
             assertTrue(components[0] instanceof JPanel);
@@ -67,7 +67,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
             JLabel etatPile = ((JLabel)vue[0]);
 
             assertTrue(components[1] instanceof JPanel);
-            Component[] controle = ((JPanel)components[1]).getComponents();
+            Component[] controle = ((JPanel)components[2]).getComponents();
             assertEquals(" ce n'est pas l'IHM attendue ?", 2, controle.length);
 
             assertTrue(" ce n'est pas l'IHM attendue ?", controle[0] instanceof JTextField);
@@ -97,7 +97,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
         try{
             Container panel = f.getContentPane();
             Component[] components = panel.getComponents();
-            assertEquals(" ce n'est pas l'IHM attendue ?", 2, components.length);
+            assertEquals(" ce n'est pas l'IHM attendue ?",3, components.length);
 
             // la bonne IHM
             assertTrue(components[0] instanceof JPanel);
@@ -105,7 +105,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
             JLabel etatPile = ((JLabel)vue[0]);
 
             assertTrue(components[1] instanceof JPanel);
-            Component[] controle = ((JPanel)components[1]).getComponents();
+            Component[] controle = ((JPanel)components[2]).getComponents();
             assertEquals(" ce n'est pas l'IHM attendue ?", 2, controle.length);
 
             assertTrue(" ce n'est pas l'IHM attendue ?", controle[0] instanceof JTextField);
@@ -132,15 +132,15 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
         try{
             Container panel = f.getContentPane();
             Component[] components = panel.getComponents();
-            assertEquals(" ce n'est pas l'IHM attendue ?", 2, components.length);
+            assertEquals(" ce n'est pas l'IHM attendue ?", 3, components.length);
 
             // la bonne IHM
             assertTrue(" ce n'est pas l'IHM attendue ?", components[0] instanceof JPanel);
             Component[] vue = ((JPanel)components[0]).getComponents();
             JLabel etatPile = ((JLabel)vue[0]);
 
-            assertTrue(" ce n'est pas l'IHM attendue ?", components[1] instanceof JPanel);
-            Component[] controle = ((JPanel)components[1]).getComponents();
+            assertTrue(" ce n'est pas l'IHM attendue ?", components[2] instanceof JPanel);
+            Component[] controle = ((JPanel)components[2]).getComponents();
             assertEquals(" ce n'est pas l'IHM attendue ?", 2, controle.length);
 
             assertTrue(controle[0] instanceof JTextField);
@@ -168,15 +168,15 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
         try{
             Container panel = f.getContentPane();
             Component[] components = panel.getComponents();
-            assertEquals(" ce n'est pas l'IHM attendue ?", 2, components.length);
+            assertEquals(" ce n'est pas l'IHM attendue ?", 3, components.length);
 
             // la bonne IHM
             assertTrue(" ce n'est pas l'IHM attendue ?", components[0] instanceof JPanel);
             Component[] vue = ((JPanel)components[0]).getComponents();
             JLabel etatPile = ((JLabel)vue[0]);
 
-            assertTrue(" ce n'est pas l'IHM attendue ?", components[1] instanceof JPanel);
-            Component[] controle = ((JPanel)components[1]).getComponents();
+            assertTrue(" ce n'est pas l'IHM attendue ?", components[2] instanceof JPanel);
+            Component[] controle = ((JPanel)components[2]).getComponents();
             assertEquals(" ce n'est pas l'IHM attendue ?", 2, controle.length);
 
             assertTrue(" ce n'est pas l'IHM attendue ?", controle[0] instanceof JTextField);
@@ -202,7 +202,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
     private void empiler(String str) throws Exception{
         Container panel = f.getContentPane();
         Component[] components = panel.getComponents();
-        Component[] controle = ((JPanel)components[1]).getComponents();
+        Component[] controle = ((JPanel)components[2]).getComponents();
         Component[] subComponents = ((JPanel)controle[1]).getComponents();
 
         Point location = controle[0].getLocationOnScreen();
@@ -216,7 +216,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
     private String add(){
         Container panel = f.getContentPane();
         Component[] components = panel.getComponents();
-        Component[] controle = ((JPanel)components[1]).getComponents();
+        Component[] controle = ((JPanel)components[2]).getComponents();
         Component[] subComponents = ((JPanel)controle[1]).getComponents();
         Component[] vue = ((JPanel)components[0]).getComponents();
         JLabel etatPile = ((JLabel)vue[0]);
@@ -231,7 +231,7 @@ public class IHMCalculetteTest extends junit.framework.TestCase{
     private String sub(){
         Container panel = f.getContentPane();
         Component[] components = panel.getComponents();
-        Component[] controle = ((JPanel)components[1]).getComponents();
+        Component[] controle = ((JPanel)components[2]).getComponents();
         Component[] subComponents = ((JPanel)controle[1]).getComponents();
         Component[] vue = ((JPanel)components[0]).getComponents();
         JLabel etatPile = ((JLabel)vue[0]);
