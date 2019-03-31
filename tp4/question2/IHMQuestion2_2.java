@@ -29,18 +29,23 @@ public class IHMQuestion2_2 extends JFrame {
         
 
         //addition des ActionListeners du bouton A
-        boutonA.addActionListener(new JButtonObserver("jbo1",contenu));
-        boutonA.addActionListener(new JButtonObserver("jbo2",contenu));
-        boutonA.addActionListener(new JButtonObserver("jbo3",contenu));
+        JButtonObserver jbo1 = new JButtonObserver("jbo1",contenu);
+        JButtonObserver jbo2 = new JButtonObserver("jbo2",contenu);
+        JButtonObserver jbo3 = new JButtonObserver("jbo3",contenu);
+        //addition des ActionListeners du bouton A
+        boutonA.addActionListener(jbo1);
+        boutonA.addActionListener(jbo2);
+        boutonA.addActionListener(jbo3);
         //addition des ActionListeners du bouton B
-        boutonB.addActionListener(new JButtonObserver("jbo1",contenu));
-        boutonB.addActionListener(new JButtonObserver("jbo2",contenu));
+        boutonB.addActionListener(jbo1);
+        boutonB.addActionListener(jbo2);
         //addition de l'ActionListeners du bouton C
-        boutonC.addActionListener(new JButtonObserver("jbo1",contenu));
+        boutonC.addActionListener(jbo1);
         // à compléter pour la question 2_2 (JMouseObserver)
-        boutonA.addMouseListener(new JMouseObserver("jmo1",contenu));
-        boutonB.addMouseListener(new JMouseObserver("jmo1",contenu));
-        boutonC.addMouseListener(new JMouseObserver("jmo1",contenu));
+        JMouseObserver jmo1 = new JMouseObserver("jmo1",contenu);
+        boutonA.addMouseListener(jmo1);
+        boutonB.addMouseListener(jmo1);
+        boutonC.addMouseListener(jmo1);
         
     }
     

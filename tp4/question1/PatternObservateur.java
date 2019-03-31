@@ -82,27 +82,22 @@ public class PatternObservateur extends junit.framework.TestCase {
         l2.addObserver(o1);
         l2.addObserver(o2);
 
-        l1.insert("Hello World");
-        l1.insert("test observer");
-        l2.insert("java avancée");
-        l2.insert("je n'ai plus d'idée");
+        
         // vÃ©rifier le bon fonctionnement de countObservers(), de deleteObserver
         // et deleteObservers()
 
-        assertTrue(o1.arguments().pop().equals(o2.arguments().peek())&&o2.arguments().pop().toString().endsWith("idée"));
-        assertEquals(o2.senders().pop(),o2.senders().peek());
-        assertEquals(o1.senders().pop(), o1.senders().peek());
-        assertEquals(o1.senders().pop(), o2.senders().pop());
-        assertTrue(o2.arguments().pop().equals(o1.arguments().peek())&&o1.arguments().pop().toString().startsWith("java"));
-        assertEquals(o2.senders().pop(),o2.senders().peek());
-        assertEquals(o1.senders().pop(), o1.senders().peek());
-        assertEquals(o1.senders().pop(), o2.senders().pop());
-        assertTrue(o2.arguments().pop().equals(o1.arguments().peek())&&o1.arguments().pop().toString().startsWith("test"));
-        assertTrue(o1.arguments().pop().equals(o2.arguments().peek())&&o2.arguments().pop().toString().startsWith("Hello"));
+        assertTrue(l1.countObservers()==2);
+        assertTrue(l2.countObservers()==2);
         
-        l1.deleteObservers();
-        l2.deleteObservers();
+        l1.deleteObserver(o1);
+        l2.deleteObserver(o2);
         
+        assertTrue(l1.countObservers()==1);
+        assertTrue(l2.countObservers()==1);
+        
+        l1.deleteObserver(o2);
+        l2.deleteObserver(o1);
+                
         // ne pas modifier ces lignes, derniÃ¨res assertions vraies de cette
         // mÃ©thode
         assertTrue(o1.senders().empty());
